@@ -1,0 +1,210 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 5 jul 2025, 21:35:42
+    Author     : Felipe
+*/
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+}
+
+.navbar {
+    background-color: #000 !important;
+    padding: 1rem 0;
+}
+
+.logo-navbar {
+    height: 100px;
+    width: auto;
+    max-width: 300px;
+    display: block;
+    object-fit: contain;
+}
+
+.navbar-brand {
+    color: white !important;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    margin: 0 15px;
+    position: relative;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #17a2b8 !important;
+}
+
+.country-selector {
+    background-color: transparent;
+    border: 1px solid #333;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.hero-section {
+    background: linear-gradient(135deg, #000 0%, #1a1a1a 100%);
+    color: white;
+    padding: 80px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 30px;
+    line-height: 1.2;
+}
+
+.hero-description {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.mission-badge {
+    background: linear-gradient(135deg, #17a2b8, #20c997);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    position: absolute;
+    top: 50px;
+    right: 50px;
+    max-width: 300px;
+    transform: rotate(5deg);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.products-section {
+    padding: 80px 0;
+    background-color: white;
+}
+
+.product-card {
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 30px;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+.footer {
+    background-color: #000;
+    color: white;
+    padding: 60px 0 30px 0;
+}
+
+.footer h5 {
+    color: #17a2b8;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer ul li {
+    margin-bottom: 10px;
+}
+
+.footer ul li a {
+    color: #ccc;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer ul li a:hover {
+    color: #17a2b8;
+}
+
+.social-icons a {
+    color: #ccc;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #17a2b8;
+}
+
+.footer-bottom {
+    border-top: 1px solid #333;
+    margin-top: 40px;
+    padding-top: 20px;
+    text-align: center;
+    color: #999;
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2.5rem;
+    }
+
+    .mission-badge {
+        position: static;
+        transform: none;
+        margin-top: 30px;
+    }
+}
+
+.nav-link, .dropdown-item {
+    transition: transform 0.4s ease, background-color 0.3s ease;
+    transform-origin: top;
+}
+
+.nav-link:hover, .dropdown-item:hover {
+    transform: rotateX(20deg);
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120vw;
+    height: 67.5vw;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    opacity: 0.2;
+    filter: grayscale(30%) contrast(110%);
+    pointer-events: none;
+}
+
