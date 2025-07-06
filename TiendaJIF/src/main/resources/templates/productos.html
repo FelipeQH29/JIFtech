@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
+-->
+
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/plantilla :: head"></head>
+<body>
+    <header th:replace="layout/plantilla :: header"></header>
+
+    <section class="products-section py-5">
+        <div class="container">
+            <div class="row">
+                <div th:each="producto : ${productos}" class="col-lg-3 col-md-6 mb-4">
+                    <div class="product-card text-center">
+                        <div style="background: #333; height: 150px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">
+                            <img th:src="${producto.rutaImagen}" alt="Imagen" style="max-height: 120px; max-width: 100%;">
+                        </div>
+                        <h5 th:text="${producto.nombre}">Nombre Producto</h5>
+                        <p class="text-muted" th:text="${producto.descripcion}">Descripción producto</p>
+                        <p><strong>₡</strong><span th:text="${producto.precio}">0.00</span></p>
+                        <p class="text-muted" th:text="'Stock: ' + ${producto.stock}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer th:replace="layout/plantilla :: footer"></footer>
+</body>
+</html>
+
+
