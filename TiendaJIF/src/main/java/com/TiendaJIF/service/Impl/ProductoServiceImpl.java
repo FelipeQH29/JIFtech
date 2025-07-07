@@ -27,6 +27,12 @@ public class ProductoServiceImpl implements ProductoService {
     public List<Producto> getProductosPorCategoria(Long idCategoria) {
         return productoDao.findByCategoriaIdCategoria(idCategoria);
     }
+
+    @Override
+    public Producto getProductoPorId(Long idProducto) {
+        return productoDao.findById(idProducto).orElse(null);
+    }
 }
+
 
 

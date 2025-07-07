@@ -20,15 +20,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
+
 @Controller
 public class ProductoController {
-    
+
     @Autowired
     private CategoriaService categoriaService;
-    
+
     @Autowired
     private ProductoService productoService;
 
+    // Mostrar productos por categoría
     @GetMapping("/productos/categoria/{idCategoria}")
     public String listarPorCategoria(@PathVariable Long idCategoria, Model model) {
         var categorias = categoriaService.getCategorias();
@@ -37,4 +39,16 @@ public class ProductoController {
         model.addAttribute("productos", productos);
         return "productos";
     }
+
+    @GetMapping("/producto/detalle/{id}")
+    public String verDetalleProducto(@PathVariable("id") Long idProducto, Model model) {
+        var producto = productoService.getProductoPorId(idProducto);
+        if (producto == null) {
+        return "redirect:/"; // O podrías mostrar una página de error
+        }
+    model.addAttribute("producto", producto);
+    return "detalleProducto"; // apunta al archivo detalleProducto.html
+    }
+
 }
+
