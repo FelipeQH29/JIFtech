@@ -5,33 +5,34 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="layout/plantilla :: head">
-    <title>Detalle del Producto</title>
-</head>
-<body>
-    <header th:replace="layout/plantilla :: header"></header>
+    <head th:replace="layout/plantilla :: head">
+        <title>Detalle del Producto</title>
+    </head>
+    <body>
+        <header th:replace="layout/plantilla :: header"></header>
 
-    <main class="container my-5">
-        <div class="row">
-            <!-- Imagen del producto -->
-            <div class="col-md-6 text-center">
-                <img th:src="@{${producto.rutaImagen}}" alt="Imagen del producto" class="img-fluid rounded shadow">
+        <main class="container my-5">
+            <div class="row">
+                <!-- Imagen del producto -->
+                <div class="col-md-6 text-center">
+                    <img th:src="@{${producto.rutaImagen}}" alt="Imagen del producto" class="img-fluid rounded shadow">
+                </div>
+
+                <!-- Detalles del producto -->
+                <aside class="col-md-6">
+                    <h2 th:text="${producto.nombre}">Nombre del producto</h2>
+                    <p><strong>Precio:</strong> ₡<span th:text="${producto.precio}">0.00</span></p>
+                    <p><strong>Stock:</strong> <span th:text="${producto.stock}">0</span></p>
+                    <p><strong>Descripción:</strong></p>
+                    <p th:text="${producto.descripcion}">Descripción del producto</p>
+
+                    <a href="/" class="btn btn-primary mt-4">Volver al inicio</a>
+                </aside>
             </div>
+        </main>
 
-            <!-- Detalles del producto -->
-            <aside class="col-md-6">
-                <h2 th:text="${producto.nombre}">Nombre del producto</h2>
-                <p><strong>Precio:</strong> ₡<span th:text="${producto.precio}">0.00</span></p>
-                <p><strong>Stock:</strong> <span th:text="${producto.stock}">0</span></p>
-                <p><strong>Descripción:</strong></p>
-                <p th:text="${producto.descripcion}">Descripción del producto</p>
-
-                <a href="/" class="btn btn-primary mt-4">Volver al inicio</a>
-            </aside>
-        </div>
-    </main>
-
-    <footer th:replace="layout/plantilla :: footer"></footer>
-</body>
+        <footer th:replace="layout/plantilla :: footer"></footer>
+    </body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </html>
 
