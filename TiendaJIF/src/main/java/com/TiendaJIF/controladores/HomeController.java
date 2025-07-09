@@ -16,4 +16,8 @@ public class HomeController {
     public String mostrarInicio() {
         return "index";
     }
+    @GetMapping("/nosotros")
+    public String nosotros() {
+        return "nosotros"; // Retorna la vista nosotros.html
+    }
 }
