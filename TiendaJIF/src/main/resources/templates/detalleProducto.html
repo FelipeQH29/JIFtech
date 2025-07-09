@@ -26,10 +26,13 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <p><strong>Descripción:</strong></p>
                     <p th:text="${producto.descripcion}">Descripción del producto</p>
 
-                    <a href="/" class="btn btn-primary mt-4">Volver al inicio</a>
-                    <a th:href="@{'/producto/agregarCarrito/' + ${producto.idProducto}}" class="btn btn-primary">
-                        Agregar al carrito
-                    </a>
+                    <div class="d-flex gap-3 mt-4">
+                        <a href="/" class="btn btn-primary">Volver al inicio</a>
+                        <a th:href="@{'/producto/agregarCarrito/' + ${producto.idProducto}}" class="btn btn-primary">
+                            Agregar al carrito
+                        </a>
+                    </div>
+
 
                 </aside>
             </div>
