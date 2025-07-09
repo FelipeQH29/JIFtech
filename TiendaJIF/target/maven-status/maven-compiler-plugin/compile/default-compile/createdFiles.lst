@@ -1,3 +1,4 @@
+com\TiendaJIF\domain\ItemCarrito.class
 com\TiendaJIF\service\Impl\CategoriaServiceImpl.class
 com\TiendaJIF\service\Impl\ProductoServiceImpl.class
 com\TiendaJIF\controladores\ProductoController.class
@@ -8,9 +9,12 @@ com\TiendaJIF\service\Impl\ContactoServiceImpl.class
 com\TiendaJIF\controladores\ContactoController.class
 com\TiendaJIF\dao\CategoriaDao.class
 com\TiendaJIF\controladores\HomeController.class
+com\TiendaJIF\controladores\CarritoController.class
 com\TiendaJIF\service\ProductoService.class
 com\TiendaJIF\domain\Categoria.class
 com\TiendaJIF\domain\Producto.class
+com\TiendaJIF\service\CarritoService.class
 com\TiendaJIF\TiendaJifApplication.class
+com\TiendaJIF\service\Impl\CarritoServiceImpl.class
 com\TiendaJIF\dao\ContactoDao.class
 com\TiendaJIF\service\CategoriaService.class

@@ -27,6 +27,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                     <p th:text="${producto.descripcion}">Descripción del producto</p>
 
                     <a href="/" class="btn btn-primary mt-4">Volver al inicio</a>
+                    <a th:href="@{'/producto/agregarCarrito/' + ${producto.idProducto}}" class="btn btn-primary">
+                        Agregar al carrito
+                    </a>
+
                 </aside>
             </div>
         </main>

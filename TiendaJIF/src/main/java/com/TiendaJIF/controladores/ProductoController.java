@@ -5,21 +5,21 @@
 
 package com.TiendaJIF.controladores;
 
-
-
 /**
  *
  * @author Felipe
  */
 
+import com.TiendaJIF.domain.Producto;
 import com.TiendaJIF.service.CategoriaService;
 import com.TiendaJIF.service.ProductoService;
+import com.TiendaJIF.service.CarritoService;
+import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-
 
 @Controller
 public class ProductoController {
@@ -29,6 +29,9 @@ public class ProductoController {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private CarritoService carritoService;
 
     // Mostrar productos por categoría
     @GetMapping("/productos/categoria/{idCategoria}")
@@ -44,11 +47,19 @@ public class ProductoController {
     public String verDetalleProducto(@PathVariable("id") Long idProducto, Model model) {
         var producto = productoService.getProductoPorId(idProducto);
         if (producto == null) {
-        return "redirect:/"; // O podrías mostrar una página de error
+            return "redirect:/"; // O podrías mostrar una página de error
         }
-    model.addAttribute("producto", producto);
-    return "detalleProducto"; // apunta al archivo detalleProducto.html
+        model.addAttribute("producto", producto);
+        return "detalleProducto"; // apunta al archivo detalleProducto.html
     }
 
+    // ✅ Nuevo: Agregar producto al carrito
+    @GetMapping("/producto/agregarCarrito/{id}")
+    public String agregarAlCarrito(@PathVariable("id") Long idProducto, HttpSession session) {
+        Producto producto = productoService.getProductoPorId(idProducto);
+        if (producto != null) {
+            carritoService.agregarProducto(producto, session);
+        }
+        return "redirect:/carrito/ver";
+    }
 }
-
