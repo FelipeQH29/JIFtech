@@ -72,26 +72,46 @@ VALUES
 -- TABLA: USUARIO
 -- ================================
 CREATE TABLE usuario (
-  id_usuario  INT AUTO_INCREMENT PRIMARY KEY,
-  username    VARCHAR(20) NOT NULL,
-  password    VARCHAR(512) NOT NULL,
-  nombre      VARCHAR(20) NOT NULL,
-  apellidos   VARCHAR(30) NOT NULL,
-  correo      VARCHAR(75),
-  telefono    VARCHAR(15),
-  ruta_imagen VARCHAR(1024),
-  activo      BOOLEAN
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  id_usuario INT NOT NULL AUTO_INCREMENT,
+  username varchar(20) NOT NULL,
+  password varchar(512) NOT NULL,
+  nombre VARCHAR(20) NOT NULL,
+  apellidos VARCHAR(30) NOT NULL,
+  correo VARCHAR(75) NULL,
+  telefono VARCHAR(15) NULL,
+  ruta_imagen varchar(1024),
+  activo boolean,
+  PRIMARY KEY (`id_usuario`))
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- ================================
 -- TABLA: ROL
 -- ================================
-CREATE TABLE rol (
-  id_rol     INT AUTO_INCREMENT PRIMARY KEY,
-  nombre     VARCHAR(20),
-  id_usuario INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+create table rol (
+  id_rol INT NOT NULL AUTO_INCREMENT,
+  nombre varchar(20),
+  id_usuario int,
+  PRIMARY KEY (id_rol),
+  foreign key fk_rol_usuario (id_usuario) references usuario(id_usuario)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+
+/*Se insertan 3 registros en la tabla cliente como ejemplo */
+INSERT INTO usuario (id_usuario, username,password,nombre, apellidos, correo, telefono,ruta_imagen,activo) VALUES 
+(1,'jose','$2a$10$P1.w58XvnaYQUQgZUCk4aO/RTRl8EValluCqB3S2VMLTbRt.tlre.','jose', 'Castro Mora',    'ja@gmail.com',    '4556-8978', 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Juan_Diego_Madrigal.jpg/250px-Juan_Diego_Madrigal.jpg',true),
+(2,'felipe','$2a$10$GkEj.ZzmQa/aEfDmtLIh3udIH5fMphx/35d0EYeqZL5uzgCJ0lQRi','felipe',  'Contreras Mora', 'felipe@gmail.com', '5456-8789','https://upload.wikimedia.org/wikipedia/commons/0/06/Photo_of_Rebeca_Arthur.jpg',true),
+(3,'ian','$2a$10$koGR7eS22Pv5KdaVJKDcge04ZB53iMiw76.UjHPY.XyVYlYqXnPbO','ian', 'Mena Loria',     'ian@gmail.com',      '7898-8936','https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Eduardo_de_Pedro_2019.jpg/480px-Eduardo_de_Pedro_2019.jpg?20200109230854',true);
+
+
+insert into rol (id_rol, nombre, id_usuario) values
+ (1,'ROLE_ADMIN',1),  (2,'ROLE_USER',1),
+ (3,'ROLE_USER',2),
+ (4,'ROLE_USER',3);
+
+
 
 -- ================================
 -- TABLA: CONTACTO
@@ -107,24 +127,30 @@ CREATE TABLE contacto (
 -- ================================
 -- TABLAS: FACTURA Y VENTA
 -- ================================
-CREATE TABLE factura (
-  id_factura INT AUTO_INCREMENT PRIMARY KEY,
+create table factura (
+  id_factura INT NOT NULL AUTO_INCREMENT,
   id_usuario INT NOT NULL,
-  fecha      DATE,
-  total      DECIMAL(10,2),
-  estado     INT,
-  FOREIGN KEY (id_usuario) REFERENCES usuario(id_usuario)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  fecha date,  
+  total double,
+  estado int,
+  PRIMARY KEY (id_factura),
+  foreign key fk_factura_usuario (id_usuario) references usuario(id_usuario)  
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
 
-CREATE TABLE venta (
-  id_venta    INT AUTO_INCREMENT PRIMARY KEY,
-  id_factura  INT NOT NULL,
+create table venta (
+  id_venta INT NOT NULL AUTO_INCREMENT,
+  id_factura INT NOT NULL,
   id_producto INT NOT NULL,
-  precio      DECIMAL(10,2),
-  cantidad    INT,
-  FOREIGN KEY (id_factura) REFERENCES factura(id_factura),
-  FOREIGN KEY (id_producto) REFERENCES producto(id_producto)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+  precio double, 
+  cantidad int,
+  PRIMARY KEY (id_venta),
+  foreign key fk_ventas_factura (id_factura) references factura(id_factura),
+  foreign key fk_ventas_producto (id_producto) references producto(id_producto) 
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
 
 -- ================================
 -- TABLAS: REQUEST MATCHERS (seguridad)
@@ -169,3 +195,4 @@ INSERT INTO request_matcher_all (pattern) VALUES
   ('/registro/**'),
   ('/js/**'),
   ('/webjars/**');
+
