@@ -32,6 +32,11 @@ public class ProductoServiceImpl implements ProductoService {
     public Producto getProductoPorId(Long idProducto) {
         return productoDao.findById(idProducto).orElse(null);
     }
+    @Override
+    public void guardarProducto(Producto producto) {
+        productoDao.save(producto);
+    }
+
 }
 
 

@@ -17,5 +17,7 @@ public interface ProductoService {
     public List<Producto> getProductosPorCategoria(Long idCategoria);
 
     public Producto getProductoPorId(Long idProducto);
+    
+    public void guardarProducto(Producto producto);
 }
 

@@ -20,6 +20,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
+
 
 @Controller
 public class ProductoController {
@@ -61,5 +65,20 @@ public class ProductoController {
             carritoService.agregarProducto(producto, session);
         }
         return "redirect:/carrito/ver";
+    }
+@GetMapping("/formularioProducto")
+public String mostrarFormularioNuevoProducto(Model model) {
+    System.out.println("CARGANDO FORMULARIO NUEVO");
+    model.addAttribute("producto", new Producto());
+    model.addAttribute("categorias", categoriaService.getCategorias());
+    return "/formularioProducto";
+}
+
+
+    @PostMapping("/producto/guardar")
+    public String guardarProducto(@ModelAttribute("producto") Producto producto) {
+        producto.setActivo(true); // Puedes modificar esto según lógica
+        productoService.guardarProducto(producto);
+        return "redirect:/"; // Redirige al inicio o a donde quieras
     }
 }
