@@ -19,6 +19,7 @@ com\TiendaJIF\domain\Producto.class
 com\TiendaJIF\controladores\FacturaController.class
 com\TiendaJIF\service\CarritoService.class
 com\TiendaJIF\TiendaJifApplication.class
+com\tienda\ProjectConfig.class
 com\TiendaJIF\service\Impl\CarritoServiceImpl.class
 com\TiendaJIF\dao\ContactoDao.class
 com\TiendaJIF\service\CategoriaService.class
