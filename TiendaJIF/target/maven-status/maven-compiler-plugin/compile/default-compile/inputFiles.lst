@@ -6,11 +6,15 @@ C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\controladores\Producto
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\CategoriaDao.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\ContactoDao.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\ProductoDao.java
+C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\RolDao.java
+C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\UsuarioDao.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Categoria.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Contacto.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Factura.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\ItemCarrito.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Producto.java
+C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Rol.java
+C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Usuario.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\ProjectConfig.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\CarritoService.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\CategoriaService.java
@@ -21,5 +25,6 @@ C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\Categoria
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\ContactoServiceImpl.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\FacturaServiceImpl.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\ProductoServiceImpl.java
+C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\UserDetailsServiceImpl.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\ProductoService.java
 C:\Projects\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\TiendaJifApplication.java

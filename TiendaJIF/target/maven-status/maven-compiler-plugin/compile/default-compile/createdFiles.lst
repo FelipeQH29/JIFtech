@@ -5,12 +5,15 @@ com\TiendaJIF\controladores\ProductoController.class
 com\TiendaJIF\domain\Contacto.class
 com\TiendaJIF\service\FacturaService.class
 com\TiendaJIF\service\Impl\FacturaServiceImpl.class
+com\TiendaJIF\domain\Rol.class
 com\TiendaJIF\service\ContactoService.class
 com\TiendaJIF\dao\ProductoDao.class
 com\TiendaJIF\service\Impl\ContactoServiceImpl.class
 com\TiendaJIF\controladores\ContactoController.class
 com\TiendaJIF\dao\CategoriaDao.class
 com\TiendaJIF\controladores\HomeController.class
+com\TiendaJIF\domain\Usuario.class
+com\TiendaJIF\dao\UsuarioDao.class
 com\TiendaJIF\controladores\CarritoController.class
 com\TiendaJIF\service\ProductoService.class
 com\TiendaJIF\domain\Categoria.class
@@ -21,5 +24,7 @@ com\TiendaJIF\service\CarritoService.class
 com\TiendaJIF\TiendaJifApplication.class
 com\tienda\ProjectConfig.class
 com\TiendaJIF\service\Impl\CarritoServiceImpl.class
+com\TiendaJIF\dao\RolDao.class
 com\TiendaJIF\dao\ContactoDao.class
 com\TiendaJIF\service\CategoriaService.class
+com\TiendaJIF\service\Impl\UserDetailsServiceImpl.class
