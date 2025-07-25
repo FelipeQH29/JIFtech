@@ -17,12 +17,12 @@ com\TiendaJIF\dao\UsuarioDao.class
 com\TiendaJIF\controladores\CarritoController.class
 com\TiendaJIF\service\ProductoService.class
 com\TiendaJIF\domain\Categoria.class
+com\TiendaJIF\ProjectConfig.class
 com\TiendaJIF\domain\Factura.class
 com\TiendaJIF\domain\Producto.class
 com\TiendaJIF\controladores\FacturaController.class
 com\TiendaJIF\service\CarritoService.class
 com\TiendaJIF\TiendaJifApplication.class
-com\tienda\ProjectConfig.class
 com\TiendaJIF\service\Impl\CarritoServiceImpl.class
 com\TiendaJIF\dao\RolDao.class
 com\TiendaJIF\dao\ContactoDao.class
