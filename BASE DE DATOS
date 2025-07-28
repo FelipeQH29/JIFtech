@@ -196,3 +196,5 @@ INSERT INTO request_matcher_all (pattern) VALUES
   ('/js/**'),
   ('/webjars/**');
 
+SELECT * FROM producto;
+
