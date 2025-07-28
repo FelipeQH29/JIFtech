@@ -26,10 +26,10 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
-                        
+
                         <!-- ADMIN visible solo si tiene rol ROLE_ADMIN -->
                         <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                            <a class="nav-link" th:href="@{/formularioProducto}">ADMIN</a>
+                            <a class="nav-link" th:href="@{/formularioProducto}">Productos</a>
                         </li>
 
                         <li class="nav-item dropdown">
@@ -60,12 +60,6 @@
                             <a class="nav-link" href="/contact">Contacto</a>
                         </li>
 
-                        </li>
-                        <li class="nav-item">
-                            <select class="country-selector">
-                                <option>🇨🇷 Costa Rica (CRC₡)</option>
-                            </select>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#"><i class="fas fa-search"></i></a>
                         </li>
