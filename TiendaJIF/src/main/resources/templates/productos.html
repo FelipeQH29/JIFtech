@@ -6,26 +6,45 @@
 
         <script>
             window.onload = function () {
-                document.getElementById('search').focus();
-                search.value = '[[*{previoussearch}]]';
+            document.getElementById('search').focus();
+            search.value = '[[*{previoussearch}]]';
             };
         </script>
 
         <section class="products-section py-5">
             <div class="container">
                 <div class="row">
-                    <form action="#" th:action="@{'/productos/buscar/' + ${productocategoria} + '?search=' + ${search}}" method="get">
-                        <input id=search type="text" th:name="search" placeholder="Buscar por Producto" th:attr="onkeyup='busquedaDinamica()'" />
-                        <input id=submitbutton type="button" value="MOSTRAR TODOS" th:attr="onclick='buscartodos()'"/>
+                    <form action="#" th:action="@{'/productos/buscar/' + ${productocategoria} + '?search=' + ${search}}" method="get" style="display: flex; gap: 10px; align-items: center; margin-bottom: 20px;">
+                        <input 
+                            id="search"
+                            type="text"
+                            name="search"
+                            placeholder="Buscar por Producto"
+                            th:attr="onkeyup='busquedaDinamica()'"
+                            style="padding: 8px; font-size: 14px; border-radius: 5px; border: 1px solid #ccc; flex-grow: 1;"
+                            />
+
+                        <input 
+                            id="submitbutton"
+                            type="button"
+                            value="MOSTRAR TODOS"
+                            th:attr="onclick='buscartodos()'"
+                            style="padding: 8px 16px; background-color: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;"
+                            />
+
                         <script>
                             function busquedaDinamica() {
-                                window.location.href = '/productos/buscar/' + '[[*{productocategoria}]]' + '?search=' + search.value;
+                            const categoria = document.getElementById('search').closest("form").getAttribute("th:action").split('/buscar/')[1].split('?')[0];
+                            window.location.href = '/productos/buscar/' + categoria + '?search=' + document.getElementById('search').value;
                             }
+
                             function buscartodos() {
-                                window.location.href = '/productos/buscar/' + '[[*{productocategoria}]]' + '?search=';
+                            const categoria = document.getElementById('search').closest("form").getAttribute("th:action").split('/buscar/')[1].split('?')[0];
+                            window.location.href = '/productos/buscar/' + categoria + '?search=';
                             }
                         </script>
                     </form>
+
                     <div th:each="producto : ${productos}" class="col-lg-3 col-md-6 mb-4">
                         <div class="product-card text-center">
                             <div style="background: #333; height: 150px; border-radius: 10px; margin-bottom: 15px; display: flex; align-items: center; justify-content: center;">

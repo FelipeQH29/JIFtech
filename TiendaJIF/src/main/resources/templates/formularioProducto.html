@@ -6,13 +6,15 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link th:href="@{/css/estilo.css}" rel="stylesheet">
-
     </head>
     <body>
         <header th:replace="layout/plantilla :: header"></header>
         <div class="form-container">
             <h2>✨ Nuevo Producto</h2>
             <form th:action="@{/producto/guardar}" th:object="${producto}" method="post">
+                <!-- ✅ CAMPO OCULTO PARA EL ID - ESTO RESUELVE LA DUPLICACIÓN -->
+                <input type="hidden" th:field="*{idProducto}" />
+
                 <div class="form-group">
                     <label>📝 Nombre</label>
                     <input type="text" th:field="*{nombre}" required placeholder="Ingrese el nombre del producto"/>

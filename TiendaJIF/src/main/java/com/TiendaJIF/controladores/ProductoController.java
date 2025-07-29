@@ -67,10 +67,11 @@ public class ProductoController {
     // ✅ Guardar producto (nuevo o actualizado)
     @PostMapping("/producto/guardar")
     public String guardarProducto(@ModelAttribute("producto") Producto producto) {
-        producto.setActivo(true); // o lógica según tu implementación
+        producto.setActivo(true); // Puedes cambiar esta lógica si necesitas manejar el estado
         productoService.guardarProducto(producto);
-        return "productos";
+        return "redirect:/listaProductos";
     }
+
 
     // ✅ Mostrar lista de todos los productos
     @GetMapping("/listaProductos")
@@ -83,7 +84,7 @@ public class ProductoController {
 
     //  Editar producto existente
     @GetMapping("/producto/editar/{id}")
-    public String mostrarFormularioEditarProducto(@PathVariable("id") Long idProducto, Model model) {
+    public String mostrarFormularioEditarProdsucto(@PathVariable("id") Long idProducto, Model model) {
         var producto = productoService.getProductoPorId(idProducto);
         if (producto == null) {
             return "redirect:/productos";
@@ -93,12 +94,13 @@ public class ProductoController {
         return "formularioProducto";
     }
 
-    //  Eliminar producto
+    // ✅ Eliminar producto
     @GetMapping("/producto/eliminar/{id}")
     public String eliminarProducto(@PathVariable("id") Long idProducto) {
         productoService.eliminarProducto(idProducto);
-        return "productos7categoria";
+        return "redirect:/listaProductos";
     }
+
     @GetMapping("/productos/buscar/{idCategoria}")
     public String getCustomers (@PathVariable Long idCategoria, @RequestParam("search") Optional<String> searchParam, Model model){
         String finalsearchParam = searchParam.get();
