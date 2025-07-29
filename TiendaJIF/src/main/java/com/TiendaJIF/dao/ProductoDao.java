@@ -16,5 +16,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface ProductoDao extends CrudRepository<Producto, Long> {
     List<Producto> findByCategoriaIdCategoria(Long idCategoria);
+    List<Producto> findByCategoriaIdCategoriaAndNombreContainingIgnoreCase(Long categoria, String nombre);
 }
 

@@ -13,11 +13,22 @@ package com.TiendaJIF.service;
 import com.TiendaJIF.domain.Producto;
 import java.util.List;
 
+
+
 public interface ProductoService {
+    
     public List<Producto> getProductosPorCategoria(Long idCategoria);
 
     public Producto getProductoPorId(Long idProducto);
     
     public void guardarProducto(Producto producto);
+
+    
+    public List<Producto> getProductos(); // Para listar todos
+    
+    public void eliminarProducto(Long idProducto); // Para eliminar por ID
+    
+    public List<Producto> getProductoPorNombre(Long idCategoria, String nombre);
 }
+
 

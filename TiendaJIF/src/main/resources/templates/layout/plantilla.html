@@ -29,7 +29,7 @@
 
                         <!-- ADMIN visible solo si tiene rol ROLE_ADMIN -->
                         <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
-                            <a class="nav-link" th:href="@{/formularioProducto}">Productos</a>
+                            <a class="nav-link" th:href="@{/listaProductos}">Productos</a>
                         </li>
 
                         <li class="nav-item dropdown">
