@@ -10,31 +10,31 @@
     <body>
         <header th:replace="layout/plantilla :: header"></header>
         <div class="form-container">
-            <h2>✨ Nuevo Producto</h2>
+            <h2> Nuevo Producto</h2>
             <form th:action="@{/producto/guardar}" th:object="${producto}" method="post">
-                <!-- ✅ CAMPO OCULTO PARA EL ID - ESTO RESUELVE LA DUPLICACIÓN -->
+                <!--  CAMPO OCULTO PARA EL ID - ESTO RESUELVE LA DUPLICACIÓN -->
                 <input type="hidden" th:field="*{idProducto}" />
 
                 <div class="form-group">
-                    <label>📝 Nombre</label>
+                    <label> Nombre</label>
                     <input type="text" th:field="*{nombre}" required placeholder="Ingrese el nombre del producto"/>
                 </div>
                 <div class="form-group">
-                    <label>📄 Descripción</label>
+                    <label> Descripción</label>
                     <textarea th:field="*{descripcion}" required placeholder="Describe el producto detalladamente..."></textarea>
                 </div>
                 <div class="form-row">
                     <div class="form-group">
-                        <label>💰 Precio</label>
+                        <label> Precio</label>
                         <input type="number" step="0.01" th:field="*{precio}" required placeholder="0.00"/>
                     </div>
                     <div class="form-group">
-                        <label>📦 Stock</label>
+                        <label> Stock</label>
                         <input type="number" th:field="*{stock}" placeholder="Cantidad disponible"/>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>🏷️ Categoría</label>
+                    <label>️ Categoría</label>
                     <select th:field="*{categoria.idCategoria}" required>
                         <option value="">Seleccione una categoría</option>
                         <option th:each="cat : ${categorias}" 
@@ -43,14 +43,14 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label>🖼️ URL de Imagen</label>
+                    <label>️ URL de Imagen</label>
                     <input type="text" th:field="*{rutaImagen}" placeholder="https://ejemplo.com/imagen.jpg"/>
                 </div>
                 <div class="form-group">
-                    <label>⚡ Estado</label>
+                    <label> Estado</label>
                     <input type="text" th:field="*{estado}" placeholder="Activo, Inactivo, etc."/>
                 </div>
-                <button type="submit" class="submit-btn">💾 Guardar Producto</button>
+                <button type="submit" class="submit-btn"> Guardar Producto</button>
             </form>
         </div>
         <footer th:replace="layout/plantilla :: footer"></footer>

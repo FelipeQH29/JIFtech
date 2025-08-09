@@ -24,7 +24,7 @@ public class ProductoController {
     @Autowired
     private CarritoService carritoService;
 
-    // ✅ Mostrar productos por categoría
+    //  Mostrar productos por categoría
     @GetMapping("/productos/categoria/{idCategoria}")
     public String listarPorCategoria(@PathVariable Long idCategoria, Model model) {
         var categorias = categoriaService.getCategorias();
@@ -35,7 +35,7 @@ public class ProductoController {
         return "productos";
     }
 
-    // ✅ Detalle del producto
+    //  Detalle del producto
     @GetMapping("/producto/detalle/{id}")
     public String verDetalleProducto(@PathVariable("id") Long idProducto, Model model) {
         var producto = productoService.getProductoPorId(idProducto);
@@ -46,7 +46,7 @@ public class ProductoController {
         return "detalleProducto";
     }
 
-    // ✅ Agregar al carrito
+    //  Agregar al carrito
     @GetMapping("/producto/agregarCarrito/{id}")
     public String agregarAlCarrito(@PathVariable("id") Long idProducto, HttpSession session) {
         Producto producto = productoService.getProductoPorId(idProducto);
@@ -56,7 +56,7 @@ public class ProductoController {
         return "redirect:/carrito/ver";
     }
 
-    // ✅ Mostrar formulario nuevo producto
+    //  Mostrar formulario nuevo producto
     @GetMapping("/formularioProducto")
     public String mostrarFormularioNuevoProducto(Model model) {
         model.addAttribute("producto", new Producto());
@@ -64,7 +64,7 @@ public class ProductoController {
         return "formularioProducto";
     }
 
-    // ✅ Guardar producto (nuevo o actualizado)
+    //  Guardar producto (nuevo o actualizado)
     @PostMapping("/producto/guardar")
     public String guardarProducto(@ModelAttribute("producto") Producto producto) {
         producto.setActivo(true); // Puedes cambiar esta lógica si necesitas manejar el estado
@@ -73,7 +73,7 @@ public class ProductoController {
     }
 
 
-    // ✅ Mostrar lista de todos los productos
+    //  Mostrar lista de todos los productos
     @GetMapping("/listaProductos")
     public String listarProductos(Model model) {
         var productos = productoService.getProductos();
@@ -94,7 +94,7 @@ public class ProductoController {
         return "formularioProducto";
     }
 
-    // ✅ Eliminar producto
+    //  Eliminar producto
     @GetMapping("/producto/eliminar/{id}")
     public String eliminarProducto(@PathVariable("id") Long idProducto) {
         productoService.eliminarProducto(idProducto);
