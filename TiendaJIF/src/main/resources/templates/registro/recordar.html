@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <!-- Inserta el <head> desde el layout base -->
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TiendaJIF</title>
+    </head>
+
+    <body>
+
+        <!-- Inserta el encabezado desde el layout -->
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Inserta el fragmento que contiene el formulario para recordar usuario -->
+        <section th:replace="~{registro/fragmentos :: recordarUsuario}"/>
+
+        <!-- Inserta el pie de página desde el layout -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>
+

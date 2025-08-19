@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+    <!-- Inserta el <head> común desde el layout -->
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>TiendaJIF</title>
+    </head>
+
+    <body>
+
+        <!-- Inserta el encabezado común -->
+        <header th:replace="~{layout/plantilla :: header}"/>
+
+        <!-- Contenedor centrado con tarjeta para mostrar mensajes -->
+        <div class="row py-2 justify-content-center">
+            <div class="col-md-3">
+                <div class="card">
+
+                    <!-- Título del mensaje (por ejemplo: activación, error, etc.) -->
+                    <div class="card-header align-items-center">
+                        [[${titulo}]]
+                    </div>
+
+                    <!-- Contenido del mensaje en negrita -->
+                    <div class="card-body">
+                        <strong>[[${mensaje}]]</strong>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Inserta el pie de página común -->
+        <footer th:replace="~{layout/plantilla :: footer}"/>
+
+    </body>
+</html>
+

@@ -12,7 +12,7 @@
 
     <body>
 
-        <nav th:fragment="header" class="navbar navbar-expand-lg navbar-dark">
+        <header th:fragment="header" class="navbar navbar-expand-lg navbar-dark">
             <div class="container">
                 <a class="navbar-brand" href="/index">
                     <img th:src="@{/images/JIF.png}" alt="JIF RETRO STORE" style="height: 150px;">
@@ -48,33 +48,33 @@
                                 Tienda
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="tiendaDropdown">
-                                <li><a class="dropdown-item" href="/productos/categoria/1">Consolas</a></li>
-                                <li><a class="dropdown-item" href="/productos/categoria/3">Juegos</a></li>
-                                <li><a class="dropdown-item" href="/productos/categoria/2">Accesorios</a></li>
+                                <li><a class="dropdown-item" th:href="@{/productos/categoria/1}">Consolas</a></li>
+                                <li><a class="dropdown-item" th:href="@{/productos/categoria/3}">Juegos</a></li>
+                                <li><a class="dropdown-item" th:href="@{/productos/categoria/2}">Accesorios</a></li>
                             </ul>
                         </li>
 
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/nosotros">Nosotros</a>
+                            <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/index">Home</a>
+                            <a class="nav-link" th:href="@{/index}">Home</a>
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contacto</a>
+                            <a class="nav-link" th:href="@{/contact}">Contacto</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/login"><i class="fas fa-user"></i></a>
+                            <a class="nav-link" th:href="@{/login}"><i class="fas fa-user"></i></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/carrito/ver"><i class="fas fa-shopping-cart"></i></a>
+                            <a class="nav-link" th:href="@{/carrito/ver}"><i class="fas fa-shopping-cart"></i></a>
                         </li>
                     </ul>
                 </div>
             </div>
-        </nav>
+        </header>
 
         <footer th:fragment="footer" class="footer">
             <div class="container">
