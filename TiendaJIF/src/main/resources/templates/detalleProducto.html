@@ -5,11 +5,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
-    <head th:replace="layout/plantilla :: head">
+    <head th:replace="~{layout/plantilla :: head}">
         <title>Detalle del Producto</title>
     </head>
     <body>
-        <header th:replace="layout/plantilla :: header"></header>
+        <header th:replace="~{layout/plantilla :: header}"></header>
 
         <main class="container my-5">
             <div class="row">
