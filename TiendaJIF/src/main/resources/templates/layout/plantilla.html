@@ -77,7 +77,7 @@
                                           th:text="${#authentication.principal.attributes['email']}">email@ejemplo.com</span>
                                 </li>
 
-                                <li><a class="dropdown-item" th:href="@{/perfil}">Ver perfil</a></li>
+                                <li><a class="dropdown-item" th:href="@{/perfil/ver}">Ver perfil</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form th:action="@{/logout}" method="post" class="px-3">

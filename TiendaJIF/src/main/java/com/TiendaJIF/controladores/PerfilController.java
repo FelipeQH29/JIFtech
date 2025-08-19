@@ -15,20 +15,21 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
+@RequestMapping("/perfil")
 public class PerfilController {
 
     @Autowired
     private UsuarioService usuarioService;
 
-    @GetMapping("/perfil")
+    @GetMapping("/ver")
     public String perfil(Authentication authentication, Model model) {
         String username = authentication.getName();
         Usuario usuario = usuarioService.getUsuarioPorUsername(username);
 
         model.addAttribute("usuario", usuario);
-        return "perfil"; // perfil.html en templates
+        return "perfil/ver"; // perfil.html en templates
     }
 }

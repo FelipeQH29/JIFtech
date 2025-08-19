@@ -59,7 +59,7 @@ public class ProjectConfig implements WebMvcConfigurer {
 
                 .requestMatchers("/facturar/carrito").hasRole("USER")
                     
-                .requestMatchers("/perfil").authenticated()
+                .requestMatchers("/perfil/**").authenticated()
 
                 .anyRequest().authenticated()
             )
