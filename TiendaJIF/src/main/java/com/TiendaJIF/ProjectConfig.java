@@ -33,6 +33,7 @@ public class ProjectConfig implements WebMvcConfigurer {
     }
 
     // Seguridad HTTP
+    // Seguridad HTTP
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -40,7 +41,9 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .requestMatchers(
                     "/", "/index", "/errores/**", "/carrito/**", "/registro/**",
                     "/js/**", "/webjars/**", "/css/**", "/images/**",
-                    "/productos/**", "/contact", "/nosotros"
+                    "/productos/**", "/contact", "/nosotros",
+                    // 👉 Permitir endpoints de OAuth2:
+                    "/oauth2/**", "/login/oauth2/**"
                 ).permitAll()
 
                 .requestMatchers(
@@ -55,18 +58,30 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .hasAnyRole("ADMIN")
 
                 .requestMatchers("/facturar/carrito").hasRole("USER")
+                    
+                .requestMatchers("/perfil").authenticated()
 
                 .anyRequest().authenticated()
             )
+
+            // Login tradicional
             .formLogin(form -> form
                 .loginPage("/login")
                 .defaultSuccessUrl("/index", true)
                 .permitAll()
             )
-            .logout(logout -> logout.permitAll());
+
+            // 👉 Login con Google
+            .oauth2Login(oauth -> oauth
+                .loginPage("/login")                // usa la misma página de login
+                .defaultSuccessUrl("/index", true)  // adonde redirige tras login con Google
+            )
+
+            .logout(logout -> logout.logoutSuccessUrl("/").permitAll());
 
         return http.build();
     }
+
 
     // Inyección del servicio de usuarios
         @Autowired

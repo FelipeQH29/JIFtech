@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+    <head th:replace="~{layout/plantilla :: head}">
+    <head>
+        <meta charset="UTF-8">
+        <title>Perfil</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/webjars/font-awesome/css/all.css}" rel="stylesheet"/>
+    </head>
+    <body>
+        <!-- Header global -->
+        <header th:replace="~{layout/plantilla :: header}"></header>
+
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="card shadow-sm border-0">
+                        <div class="card-body">
+                            <div class="d-flex align-items-center gap-3">
+
+                                <!-- Foto: primero local (usuario.rutaImagen). Si no, Google (attributes['picture']) -->
+                                <img
+                                    th:if="${usuario != null and usuario.rutaImagen != null and !#strings.isEmpty(usuario.rutaImagen)}"
+                                    th:src="${usuario.rutaImagen}"
+                                    class="rounded-circle border" style="width:96px;height:96px;object-fit:cover;" alt="Foto">
+
+                                <img
+                                    th:if="${usuario == null} and ${#authentication?.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User)}"
+                                    th:src="${#authentication.principal.attributes['picture']}"
+                                    class="rounded-circle border" style="width:96px;height:96px;object-fit:cover;" alt="Foto">
+
+                                <!-- Avatar fallback -->
+                                <div th:if="${(usuario == null or #strings.isEmpty(usuario?.rutaImagen)) and !(#authentication?.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User))}"
+                                     class="rounded-circle bg-secondary d-flex align-items-center justify-content-center text-white"
+                                     style="width:96px;height:96px;">
+                                    <i class="fas fa-user fa-2x"></i>
+                                </div>
+
+                                <div class="flex-grow-1">
+                                    <!-- Nombre principal -->
+                                    <h4 class="mb-1"
+                                        th:text="${usuario != null} ? ${#strings.trim((usuario.nombre?:'') + ' ' + (usuario.apellidos?:''))} : 
+                                        (${#authentication?.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User)} ? 
+                                        ${#authentication.principal.attributes['name']} : ${#authentication.name})">
+                                        Nombre Apellido
+                                    </h4>
+
+                                    <!-- Correo -->
+                                    <div class="text-muted"
+                                         th:text="${usuario != null ? usuario.correo : 
+                                         (#authentication?.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User) ? 
+                                         #authentication.principal.attributes['email'] : '')}">
+                                        email@ejemplo.com
+                                    </div>
+
+                                    <!-- Username (local) -->
+                                    <div class="small text-muted" th:if="${usuario != null}">
+                                        <i class="fas fa-at me-1"></i><span th:text="${usuario.username}">username</span>
+                                    </div>
+
+                                    <!-- Badges de roles (local) -->
+                                    <div class="mt-2" th:if="${usuario != null and usuario.roles != null}">
+                                        <span class="badge text-bg-secondary me-1"
+                                              th:each="r : ${usuario.roles}"
+                                              th:text="${r.nombre}">ROLE_USER</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Info adicional (local) -->
+                            <div class="row g-3 mt-3" th:if="${usuario != null}">
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded">
+                                        <div class="text-muted small mb-1">Teléfono</div>
+                                        <div th:text="${#strings.isEmpty(usuario.telefono) ? '—' : usuario.telefono}">—</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="p-3 bg-light rounded">
+                                        <div class="text-muted small mb-1">Estado</div>
+                                        <span th:classappend="${usuario.activo} ? 'badge text-bg-success' : 'badge text-bg-danger'"
+                                              th:text="${usuario.activo} ? 'Activo' : 'Inactivo'">Activo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card-footer d-flex justify-content-between">
+                            <a class="btn btn-outline-secondary" th:href="@{/}">
+                                <i class="fas fa-arrow-left me-2"></i>Volver
+                            </a>
+
+                            <div class="d-flex gap-2">
+                                <!-- Si quieres una página para editar perfil local -->
+                                <a class="btn btn-outline-primary"
+                                   th:href="@{/perfil/editar}"
+                                   th:if="${usuario != null}">
+                                    <i class="fas fa-user-edit me-2"></i>Editar perfil
+                                </a>
+
+                                <!-- Logout (POST con CSRF) -->
+                                <form th:action="@{/logout}" method="post" class="d-inline">
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                                    <button type="submit" class="btn btn-outline-danger">
+                                        <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensajes flash opcionales -->
+                    <div class="mt-3">
+                        <div th:if="${msgOk}" class="alert alert-success" th:text="${msgOk}"></div>
+                        <div th:if="${msgErr}" class="alert alert-danger" th:text="${msgErr}"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+    </body>
+</html>

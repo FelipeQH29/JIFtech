@@ -12,12 +12,14 @@
 
     <body>
 
-        <header th:fragment="header" class="navbar navbar-expand-lg navbar-dark">
+        <header th:fragment="header" class="navbar navbar-expand-lg navbar-dark"
+                xmlns:th="http://www.thymeleaf.org"
+                xmlns:sec="https://www.thymeleaf.org/extras/spring-security">
+
             <div class="container">
                 <a class="navbar-brand" href="/index">
                     <img th:src="@{/images/JIF.png}" alt="JIF RETRO STORE" style="height: 150px;">
-                    <div style="font-size: 0.75rem; line-height: 1rem; margin-top: 5px;">
-                    </div>
+                    <div style="font-size: 0.75rem; line-height: 1rem; margin-top: 5px;"></div>
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -27,26 +29,18 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
 
-                        <!-- ADMIN visible solo si tiene rol ROLE_ADMIN -->
+                        <!-- ADMIN -->
                         <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a class="nav-link" th:href="@{/usuario/listado}">Usuarios</a>
                         </li>
-                        
-                        
-                        <!-- ADMIN visible solo si tiene rol ROLE_ADMIN -->
                         <li class="nav-item" sec:authorize="hasRole('ROLE_ADMIN')">
                             <a class="nav-link" th:href="@{/listaProductos}">Productos</a>
                         </li>
 
+                        <!-- Tienda -->
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle"
-                               href="#"
-                               id="tiendaDropdown"
-                               role="button"
-                               data-bs-toggle="dropdown"
-                               aria-expanded="true">
-                                Tienda
-                            </a>
+                            <a class="nav-link dropdown-toggle" href="#" id="tiendaDropdown"
+                               role="button" data-bs-toggle="dropdown" aria-expanded="true">Tienda</a>
                             <ul class="dropdown-menu" aria-labelledby="tiendaDropdown">
                                 <li><a class="dropdown-item" th:href="@{/productos/categoria/1}">Consolas</a></li>
                                 <li><a class="dropdown-item" th:href="@{/productos/categoria/3}">Juegos</a></li>
@@ -54,27 +48,66 @@
                             </ul>
                         </li>
 
+                        <li class="nav-item"><a class="nav-link" th:href="@{/nosotros}">Nosotros</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/index}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" th:href="@{/contact}">Contacto</a></li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/nosotros}">Nosotros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/index}">Home</a>
+                        <!-- Usuario autenticado -->
+                        <li class="nav-item dropdown" sec:authorize="isAuthenticated()">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center gap-1"
+                               href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <!-- Mostrar foto solo si el principal ES OAuth2User (Google) -->
+                                <img th:if="${#authentication?.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User)}"
+                                     th:src="${#authentication.principal.attributes['picture']}"
+                                     class="rounded-circle" style="width:24px;height:24px;object-fit:cover;" alt="Foto">
+
+                                <!-- Nombre: (Google ? name : username) -->
+                                <span th:text="${(#authentication?.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User))
+                                      ? #authentication.principal.attributes['name']
+                                      : #authentication.name}">
+                                    Usuario
+                                </span>
+                            </a>
+
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                                <!-- Email si es Google -->
+                                <li th:if="${#authentication?.principal instanceof T(org.springframework.security.oauth2.core.user.OAuth2User)}">
+                                    <span class="dropdown-item-text small text-muted"
+                                          th:text="${#authentication.principal.attributes['email']}">email@ejemplo.com</span>
+                                </li>
+
+                                <li><a class="dropdown-item" th:href="@{/perfil}">Ver perfil</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <form th:action="@{/logout}" method="post" class="px-3">
+                                        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                                        <button type="submit" class="btn btn-outline-danger w-100">Cerrar sesión</button>
+                                    </form>
+                                </li>
+                            </ul>
                         </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/contact}">Contacto</a>
+                        <!-- Invitado (no autenticado): icono login -->
+                        <li class="nav-item" sec:authorize="!isAuthenticated()">
+                            <a class="nav-link" th:href="@{/login}">
+                                <i class="fas fa-user"></i>
+                            </a>
                         </li>
+
+                        <!-- Carrito -->
                         <li class="nav-item">
-                            <a class="nav-link" th:href="@{/login}"><i class="fas fa-user"></i></a>
+                            <a class="nav-link" th:href="@{/carrito/ver}">
+                                <i class="fas fa-shopping-cart"></i>
+                            </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" th:href="@{/carrito/ver}"><i class="fas fa-shopping-cart"></i></a>
-                        </li>
+
                     </ul>
                 </div>
             </div>
         </header>
+
+
 
         <footer th:fragment="footer" class="footer">
             <div class="container">

@@ -18,7 +18,7 @@
                                 <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                             </a>
                         </div>
-                        
+
                         <!-- Formulario de registro -->
                         <form method="POST" th:action="@{/registro/crearUsuario}" th:object="${usuario}" class="was-validated">
                             <div class="card shadow">
@@ -42,6 +42,11 @@
                                         <label for="correo" class="form-label">[[#{usuario.correo}]]</label>
                                         <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}" required="true"/>
                                     </div>
+                                    <!-- NUEVO: Campo de contraseña -->
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label">[[#{usuario.password}]]</label>
+                                        <input type="password" class="form-control" id="password" name="password" th:field="*{password}" required="true"/>
+                                    </div>
                                 </div>
                                 <div class="card-footer d-flex justify-content-end">                                                
                                     <button type="submit" class="btn btn-success">
@@ -54,6 +59,7 @@
                 </div>
             </div>
         </section>
+
 
         <!-- 2 Fragmento que se utiliza para activar un usuario -->
         <section th:fragment="activarUsuario">
@@ -122,7 +128,7 @@
                                 <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                             </a>
                         </div>
-                        
+
                         <!-- Formulario para recordar usuario -->
                         <form method="POST" th:action="@{/registro/recordarUsuario}" th:object="${usuario}" class="was-validated">
                             <div class="card shadow">
@@ -155,7 +161,7 @@
             function readURL(input) {
                 if (input.files && input.files[0]) {
                     var reader = new FileReader();
-                    reader.onload = function(e) {
+                    reader.onload = function (e) {
                         document.getElementById('blah').src = e.target.result;
                     }
                     reader.readAsDataURL(input.files[0]);

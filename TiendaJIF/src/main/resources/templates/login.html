@@ -33,7 +33,14 @@
                         <button type="submit" class="btn btn-success">Ingresar</button>
                     </div>
                 </form>
-                
+
+                <!-- Botón de login con Google -->
+                <div class="d-grid mb-3">
+                    <a class="btn btn-outline-danger" th:href="@{/oauth2/authorization/google}">
+                        <i class="fab fa-google"></i> Continuar con Google
+                    </a>
+                </div>
+
                 <!-- Botón de registro -->
                 <div class="text-center">
                     <p class="mb-2">¿No tienes una cuenta?</p>

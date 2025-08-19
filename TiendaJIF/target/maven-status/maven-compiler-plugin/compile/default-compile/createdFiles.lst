@@ -11,6 +11,7 @@ com\TiendaJIF\dao\ProductoDao.class
 com\TiendaJIF\controladores\ContactoController.class
 com\TiendaJIF\dao\CategoriaDao.class
 com\TiendaJIF\controladores\HomeController.class
+com\TiendaJIF\controladores\PerfilController.class
 com\TiendaJIF\service\Impl\UsuarioDetailsServiceImpl.class
 com\TiendaJIF\controladores\RegistroController.class
 com\TiendaJIF\dao\UsuarioDao.class

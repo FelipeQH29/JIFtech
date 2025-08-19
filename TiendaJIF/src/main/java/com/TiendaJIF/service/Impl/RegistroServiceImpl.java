@@ -81,7 +81,7 @@ public class RegistroServiceImpl implements RegistroService {
 
             // Asigna la clave encriptada al usuario
             usuario.setPassword(clave);
-            usuario.setActivo(false); // Usuario inactivo hasta que active por correo
+            usuario.setActivo(true); // U
 
             // Guarda el usuario con roles
             usuarioService.save(usuario, true);
