@@ -1,27 +1,18 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package com.TiendaJIF.service.Impl;
-
-/**
- *
- * @author Felipe
- */
 
 import com.TiendaJIF.dao.ProductoDao;
 import com.TiendaJIF.domain.Producto;
 import com.TiendaJIF.service.ProductoService;
+import java.util.ArrayList;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList; 
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
 public class ProductoServiceImpl implements ProductoService {
-    
-    @Autowired
+
+     @Autowired
     private ProductoDao productoDao;
 
     @Override
@@ -55,9 +46,21 @@ public class ProductoServiceImpl implements ProductoService {
     public List<Producto> getProductoPorNombre(Long idCategoria, String nombre) {
         return productoDao.findByCategoriaIdCategoriaAndNombreContainingIgnoreCase(idCategoria, nombre);
     }
- 
+
+    @Override
+    @Transactional
+    public boolean descontarStock(Long idProducto, int cantidad) {
+        var opt = productoDao.findById(idProducto);
+        if (opt.isEmpty()) return false;
+
+        Producto p = opt.get();
+        if (p.getStock() == null || p.getStock() < cantidad) return false;
+
+        p.setStock(p.getStock() - cantidad);
+        if (p.getStock() == 0) {
+            p.setActivo(false);  // se oculta cuando ya no hay stock
+        }
+        productoDao.save(p);
+        return true;
+    }
 }
-
-
-
-

@@ -29,6 +29,9 @@ public interface ProductoService {
     public void eliminarProducto(Long idProducto); // Para eliminar por ID
     
     public List<Producto> getProductoPorNombre(Long idCategoria, String nombre);
+    
+    /** Resta stock en la compra. Debe retornar false si no alcanza. */
+    boolean descontarStock(Long idProducto, int cantidad);
 }
 
 

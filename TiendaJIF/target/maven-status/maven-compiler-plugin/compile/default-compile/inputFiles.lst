@@ -11,6 +11,7 @@ C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\ContactoDao.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\ProductoDao.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\RolDao.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\UsuarioDao.java
+C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\dao\VentaDao.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Categoria.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Contacto.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Factura.java
@@ -18,6 +19,7 @@ C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\ItemCarrito.jav
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Producto.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Rol.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Usuario.java
+C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\domain\Venta.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\ProjectConfig.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\CarritoService.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\CategoriaService.java
@@ -33,8 +35,10 @@ C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\ProductoS
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\RegistroServiceImpl.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\UsuarioDetailsServiceImpl.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\UsuarioServiceImpl.java
+C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\Impl\VentaServiceImpl.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\ProductoService.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\RegistroService.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\UsuarioDetailsService.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\UsuarioService.java
+C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\service\VentaService.java
 C:\Projecto\JIFtech\TiendaJIF\src\main\java\com\TiendaJIF\TiendaJifApplication.java
