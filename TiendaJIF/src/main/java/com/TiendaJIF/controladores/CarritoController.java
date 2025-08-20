@@ -20,9 +20,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/carrito")
 public class CarritoController {
 
-    @Autowired private CarritoService carritoService;
-    @Autowired private ProductoService productoService;
-    @Autowired private FacturaService  facturaService;
+    @Autowired 
+    private CarritoService carritoService;
+    @Autowired 
+    private ProductoService productoService;
+    @Autowired 
+    private FacturaService  facturaService;
 
     // Ver el carrito
     @GetMapping("/ver")
@@ -51,7 +54,7 @@ public class CarritoController {
         return "redirect:/carrito/ver";
     }
 
-    // Mostrar formulario de pago (usa TU Factura como DTO del form)
+    // Mostrar formulario de pago
     @GetMapping("/crear")
     public String mostrarPago(HttpSession session, Model model) {
         var carrito = carritoService.obtenerCarrito(session);
@@ -65,10 +68,10 @@ public class CarritoController {
         if (!model.containsAttribute("factura")) {
             model.addAttribute("factura", new Factura());
         }
-        return "carrito"; // crea esta vista si aún no existe
+        return "carrito"; // muestra el carrito
     }
 
-    // CONFIRMAR COMPRA → llama exactamente a tu guardarFactura(factura, carrito, total)
+    // Confirmar compra
     @PostMapping("/confirmar")
     public String confirmarCompra(@ModelAttribute("factura") Factura facturaPago,
                                   HttpSession session,
@@ -82,7 +85,7 @@ public class CarritoController {
         double total = carritoService.calcularTotal(session);
 
         try {
-            // 👇 TU MÉTODO, TAL CUAL
+            // guarda la factura
             facturaService.guardarFactura(facturaPago, carrito, total);
 
             // Limpia carrito tras compra exitosa

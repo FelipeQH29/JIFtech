@@ -42,7 +42,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                     "/", "/index", "/errores/**", "/carrito/**", "/registro/**",
                     "/js/**", "/webjars/**", "/css/**", "/images/**",
                     "/productos/**", "/contact", "/nosotros",
-                    // 👉 Permitir endpoints de OAuth2:
+                    // Permitir endpoints de OAuth2:
                     "/oauth2/**", "/login/oauth2/**"
                 ).permitAll()
 
@@ -71,7 +71,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .permitAll()
             )
 
-            // 👉 Login con Google
+            // Login con Google
             .oauth2Login(oauth -> oauth
                 .loginPage("/login")                // usa la misma página de login
                 .defaultSuccessUrl("/index", true)  // adonde redirige tras login con Google

@@ -14,12 +14,12 @@ import com.TiendaJIF.domain.Factura;
 import com.TiendaJIF.domain.ItemCarrito;
 import com.TiendaJIF.service.CarritoService;
 import com.TiendaJIF.service.FacturaService;
-import com.TiendaJIF.service.ProductoService;     // 👈 NUEVO
+import com.TiendaJIF.service.ProductoService;     
 import jakarta.servlet.http.HttpSession;
 import java.util.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional; // 👈 NUEVO
+import org.springframework.transaction.annotation.Transactional; 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,7 +34,7 @@ public class FacturaController {
     private FacturaService facturaService;
 
     @Autowired
-    private ProductoService productoService; // 👈 NUEVO
+    private ProductoService productoService; 
 
     @GetMapping("/crear")
     public String mostrarFormularioFactura(HttpSession session, Model model) {
@@ -53,7 +53,7 @@ public class FacturaController {
     }
 
     @PostMapping("/procesar")
-    @Transactional // 👈 hacer todo en una sola transacción
+    @Transactional //  hacer todo en una sola transacción
     public String procesarPago(@ModelAttribute("factura") Factura factura,
                                HttpSession session,
                                Model model) {
