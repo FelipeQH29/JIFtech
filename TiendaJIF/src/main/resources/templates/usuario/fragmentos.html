@@ -13,10 +13,9 @@
             <div class="container" sec:authorize="hasRole('ROLE_ADMIN')">
                 <div class="row">
                     <div class="col-md-3">   
-                        <button type="button" class="btn btn-primary btn-block" 
-                                data-bs-toggle="modal" data-bs-target="#agregarUsuario">
+                        <a th:href="@{/usuario/nuevo}" class="btn btn-primary btn-block">
                             <i class="fas fa-plus"></i> Agregar Usuario
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
