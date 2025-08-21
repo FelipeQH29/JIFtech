@@ -162,6 +162,12 @@
                                                     <label for="telefono">Telefono</label>
                                                     <input type="tel" class="form-control" name="telefono" th:field="*{telefono}">
                                                 </div>
+                                                
+                                                <div class="mb-3">
+                                                    <label for="password">Contraseña</label>
+                                                    <input type="password" class="form-control" name="password" required="true"/>
+                                                </div>
+                                                
                                                 <div class="mb-3">
                                                     <label for="imagen">Imagen</label>
                                                     <input class="form-control" type="file" name="imagenFile" onchange="readURL(this);" />
